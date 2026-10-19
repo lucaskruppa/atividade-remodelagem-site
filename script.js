@@ -1,26 +1,38 @@
- // Funções de acessibilidade
+// Funções de acessibilidade
+
+const ZOOM_MIN = 50;       
+const ZOOM_MAX = 150;      
+const ZOOM_PASSO = 10;     
+const LARGURA_BASE = 800;  
+
 let tamanhoFonte = 100;
-let tamanhoMain = 800;
-let main = document.querySelector("main")
+const main = document.querySelector("main");
+const btnAumentar = document.getElementById("btn-aumentar");
+const btnDiminuir = document.getElementById("btn-diminuir");
+
+function aplicarZoom() {
+    document.body.style.fontSize = tamanhoFonte + "%";
+    main.style.maxWidth = (LARGURA_BASE * tamanhoFonte / 100) + "px";
+
+    // Desativa o botão quando o limite é atingido
+    btnAumentar.disabled = tamanhoFonte >= ZOOM_MAX;
+    btnDiminuir.disabled = tamanhoFonte <= ZOOM_MIN;
+}
 
 function aumentarFonte() {
-
-        tamanhoFonte += 10;
-        document.body.style.fontSize = tamanhoFonte + "%";
-        tamanhoMain += 50;
-        main.style.maxWidth = tamanhoMain + "px";
-
+    if (tamanhoFonte < ZOOM_MAX) {
+        tamanhoFonte += ZOOM_PASSO;
+        aplicarZoom();
+    }
 }
 
 function diminuirFonte() {
-    
-        tamanhoFonte -= 10;
-        document.body.style.fontSize = tamanhoFonte + "%";
-        if(tamanhoMain > 800){
-            tamanhoMain -= 50;
-            main.style.maxWidth = tamanhoMain + "px";
-        }
-        
-    
+    if (tamanhoFonte > ZOOM_MIN) {
+        tamanhoFonte -= ZOOM_PASSO;
+        aplicarZoom();
+    }
 }
 
+function alternarContraste() {
+    document.body.classList.toggle("alto-contraste");
+}
