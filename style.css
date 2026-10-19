@@ -35,7 +35,7 @@ header p {
 }
 
 /* Botões */
-header button,
+.acessibilidade button,
 nav a {
     background-color: var(--azul-escuro);
     color: white;
@@ -50,19 +50,19 @@ nav a {
 }
 
 /* Ao passar o mouse (só se o botão não estiver desativado) */
-header button:hover:not(:disabled),
+.acessibilidade button:hover:not(:disabled),
 nav a:hover {
     background-color: var(--links);
     color: var(--header);
 }
 
 /* Botão desativado (quando chega no limite do zoom) */
-header button:disabled {
+.acessibilidade button:disabled {
     opacity: 0.4;
     cursor: not-allowed;
 }
 
-header button {
+.acessibilidade button {
     margin: 5px;
 }
 
@@ -158,7 +158,7 @@ footer {
 }
 
 /* Botões e links do menu: fundo preto, texto e borda amarelos */
-.alto-contraste header button,
+.alto-contraste .acessibilidade button,
 .alto-contraste nav a {
     background-color: black !important;
     color: yellow !important;
@@ -166,7 +166,7 @@ footer {
 }
 
 /* Hover: as cores se invertem (fundo amarelo, texto preto) */
-.alto-contraste header button:hover:not(:disabled),
+.alto-contraste .acessibilidade button:hover:not(:disabled),
 .alto-contraste nav a:hover {
     background-color: yellow !important;
     color: black !important;
